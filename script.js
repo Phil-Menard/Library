@@ -8,6 +8,7 @@ const yearValue = document.querySelector('#year');
 //VARIABLES
 const values = [titleValue, authorValue, pagesValue, yearValue];
 const books = [];
+
 //EVENT LISTENER
 submitButton.addEventListener('click', getValues);
 
@@ -27,20 +28,33 @@ function getValues(e)    {
     for (let i = 0; i < values.length; i++) {
         values[i].value = "";   //reinitiate the values on the form
     }
-    //add book in main with length-1?
+    
 }
 
 function displayBook(title, author, pages, year)   {
+    //create all the divs necessary for the card
     let card = document.createElement('div');
     card.className = "card";
+    let closeButton = document.createElement('button');
+    closeButton.className = "close";
     let titleDiv = document.createElement('div');
     let authorDiv = document.createElement('div');
     let pagesDiv = document.createElement('div');
     let yearDiv = document.createElement('div');
+
+    //add the content from the form to the divs
     titleDiv.textContent = "Title : " + title;
     authorDiv.textContent = "Author : " + author;
     pagesDiv.textContent = "Pages : " + pages;
     yearDiv.textContent = "Year : " + year;
-    card.append(titleDiv, authorDiv, pagesDiv, yearDiv);
+
+    //add the divs to the card, and finally the card to the main
+    card.append(closeButton ,titleDiv, authorDiv, pagesDiv, yearDiv);
     main.appendChild(card);
+
+    closeButton.addEventListener('click', removeCard);
+}
+
+function removeCard()   {
+    this.parentElement.remove();
 }
