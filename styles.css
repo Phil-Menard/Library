@@ -89,8 +89,8 @@ form > input::placeholder   {
 }
 
 .card   {
-    width : 250px;
-    height: 300px;
+    width : 260px;
+    height: 360px;
     background-color : var(--color-white);
     display: flex;
     flex-direction: column;

@@ -1,5 +1,5 @@
 const main = document.querySelector('.main');
-const submitButton = document.querySelector('button');
+const submitButton = document.querySelector('form');
 const titleValue = document.querySelector('#title');
 const authorValue = document.querySelector('#author');
 const pagesValue = document.querySelector('#pages');
@@ -11,7 +11,7 @@ const values = [titleValue, authorValue, pagesValue, yearValue];
 const books = [];
 
 //EVENT LISTENER
-submitButton.addEventListener('click', getValues);
+submitButton.addEventListener('submit', getValues);
 
 //CONSTRUCTOR
 function Book(title, author, pages, year) {
@@ -24,6 +24,9 @@ function Book(title, author, pages, year) {
 //FUNCTIONS
 function getValues(e)    {
     e.preventDefault(); //avoid the datas to be send to a non-existant server
+    if (authorValue.value == "")    {
+        authorValue.value = 'Unknown';
+    }
     books.push(new Book(titleValue.value, authorValue.value, pagesValue.value, yearValue.value));
     displayBook(titleValue.value, authorValue.value, pagesValue.value, yearValue.value);
     for (let i = 0; i < values.length; i++) {
