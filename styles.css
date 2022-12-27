@@ -1,3 +1,9 @@
+:root   {
+    --color-white : rgb(229, 236, 236);
+    --color-black: rgb(25, 29, 32);
+    font-family: 'Poppins', sans-serif;
+}
+
 body    {
     margin: 0;
     padding: 0;
@@ -7,7 +13,7 @@ body    {
 }
 
 .left   {
-    background-color: rgb(75, 95, 114);
+    background-color: var(--color-white);
     min-width: 400px;
     display: flex;
     flex-direction: column;
@@ -16,7 +22,7 @@ body    {
 }
 
 .right  {
-    background-color: aquamarine;
+    background-color: var(--color-black);
     width: 100%;
     display: flex;
     flex-direction: column;
@@ -25,47 +31,98 @@ body    {
 .main   {
     height: 100%;
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 20px;
     justify-items:center;
 }
 
 .header {
     display: flex;
     justify-content: center;
+    height: 100px;
+    margin-bottom: 30px;
+    border-bottom: 2px solid var(--color-white);
 }
 
 form    {
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 10px;
+    gap: 50px;
 }
 
 input   {
     width: 75%;
-    height: 30px;
+    height: 50px;
+    border: solid 2px var(--color-black);
     border-radius: 5px;
     text-align: center;
+    font-size: 18px;
+    background-color: var(--color-white);
+    color: var(--color-black);
 }
 
-button  {
+#addButton  {
     width: 76%;
-    height: 40px;
+    height: 60px;
     border-radius: 5px;
+    background-color: var(--color-black);
+    color: var(--color-white);
+    font-size: 18px;
+    font-weight: 600;
+    letter-spacing: 1px;
+}
+
+#addButton:hover    {
+    transition: ease-in-out .3s;
+    background-color: var(--color-white);
+    color: var(--color-black);
+}
+
+#addButton:active    {
+    transition: ease-in-out .1s;
+    border: 5px solid var(--color-black);
 }
 
 .card   {
     width : 250px;
     height: 250px;
-    background-color : rgba(106, 151, 129, 0.349);
+    background-color : var(--color-white);
     display: flex;
     flex-direction: column;
     align-items:center;
     gap: 20px;
     justify-content: center;
     font-size: 24px;
+    border: 2px solid var(--color-white);
+    border-radius: 10%;
+    box-shadow: 0 0 6px var(--color-white);
+    color: var(--color-black);
+    padding: 20px 10px 20px 20px;
 }
 
-.close  {
-    background-color: red;
+h1  {
+    color: var(--color-white);
+}
+
+h2  {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: var(--color-black);
+    height: 91px;
+    margin: 0;
+    border-bottom: solid 2px var(--color-black);
+}
+
+img  {
+    height: 42px;
+}
+
+.closeIcon  {
+    border: none;
+    width: 100%;
+    display: flex;
+    justify-content: end;
+    background-color: var(--color-white);
 }

@@ -28,7 +28,6 @@ function getValues(e)    {
     for (let i = 0; i < values.length; i++) {
         values[i].value = "";   //reinitiate the values on the form
     }
-    
 }
 
 function displayBook(title, author, pages, year)   {
@@ -36,7 +35,10 @@ function displayBook(title, author, pages, year)   {
     let card = document.createElement('div');
     card.className = "card";
     let closeButton = document.createElement('button');
-    closeButton.className = "close";
+    closeButton.className = "closeIcon";
+    let iconClose = document.createElement('img');
+    iconClose.setAttribute("src", "./images/close-svgrepo-com.svg");
+    closeButton.appendChild(iconClose);
     let titleDiv = document.createElement('div');
     let authorDiv = document.createElement('div');
     let pagesDiv = document.createElement('div');
@@ -52,9 +54,9 @@ function displayBook(title, author, pages, year)   {
     card.append(closeButton ,titleDiv, authorDiv, pagesDiv, yearDiv);
     main.appendChild(card);
 
-    closeButton.addEventListener('click', removeCard);
+    iconClose.addEventListener('click', removeCard);
 }
 
 function removeCard()   {
-    this.parentElement.remove();
+    this.parentElement.parentElement.remove();
 }
