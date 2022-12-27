@@ -51,7 +51,7 @@ form    {
     gap: 50px;
 }
 
-input   {
+form > input   {
     width: 75%;
     height: 50px;
     border: solid 2px var(--color-black);
@@ -59,8 +59,12 @@ input   {
     text-align: center;
     font-size: 18px;
     background-color: var(--color-white);
-    color: var(--color-black);
 }
+
+form > input::placeholder   {
+    color: var(--color-black);
+    letter-spacing: .5px;
+} 
 
 #addButton  {
     width: 76%;
@@ -86,7 +90,7 @@ input   {
 
 .card   {
     width : 250px;
-    height: 250px;
+    height: 300px;
     background-color : var(--color-white);
     display: flex;
     flex-direction: column;
@@ -125,4 +129,19 @@ img  {
     display: flex;
     justify-content: end;
     background-color: var(--color-white);
+}
+
+#read   {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+}
+
+.switch    {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 18px;
+    font-size: 18px;
+    font-weight: 500;
 }

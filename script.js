@@ -4,6 +4,7 @@ const titleValue = document.querySelector('#title');
 const authorValue = document.querySelector('#author');
 const pagesValue = document.querySelector('#pages');
 const yearValue = document.querySelector('#year');
+const readValue = document.querySelector("#read");
 
 //VARIABLES
 const values = [titleValue, authorValue, pagesValue, yearValue];
@@ -28,6 +29,9 @@ function getValues(e)    {
     for (let i = 0; i < values.length; i++) {
         values[i].value = "";   //reinitiate the values on the form
     }
+    if (readValue.checked)  {   //uncheck the read button if it was checked
+        readValue.checked = false;
+    }
 }
 
 function displayBook(title, author, pages, year)   {
@@ -44,19 +48,49 @@ function displayBook(title, author, pages, year)   {
     let pagesDiv = document.createElement('div');
     let yearDiv = document.createElement('div');
 
-    //add the content from the form to the divs
-    titleDiv.textContent = "Title : " + title;
-    authorDiv.textContent = "Author : " + author;
-    pagesDiv.textContent = "Pages : " + pages;
-    yearDiv.textContent = "Year : " + year;
+    let readDiv = document.createElement('div');
+    let switchButton = document.createElement('input');
+    switchButton.setAttribute("type", "checkbox");
+   switchButton.style.width = "24px";
+   switchButton.style.height = "24px";
+   readDiv.style.display = "flex";
+   readDiv.style.alignItems = "center";
+   readDiv.style.gap = "20px";
+   //add the content from the form to the divs
+   titleDiv.textContent = "Title : " + title;
+   authorDiv.textContent = "Author : " + author;
+   pagesDiv.textContent = "Pages : " + pages;
+   yearDiv.textContent = "Year : " + year;
+   if (readValue.checked)    {
+       readDiv.textContent = "Read";
+       readDiv.style.color = "green";
+       switchButton.checked = true;
+    }
+    else    {
+        readDiv.textContent = "Not Read";
+        readDiv.style.color = "red";
+    }
 
     //add the divs to the card, and finally the card to the main
-    card.append(closeButton ,titleDiv, authorDiv, pagesDiv, yearDiv);
+    readDiv.appendChild(switchButton);
+    card.append(closeButton ,titleDiv, authorDiv, pagesDiv, yearDiv, readDiv);
     main.appendChild(card);
 
     iconClose.addEventListener('click', removeCard);
+    switchButton.addEventListener('click', function()   {
+        if (switchButton.checked)   {
+            readDiv.textContent = "Read";
+            readDiv.style.color = "green";
+            readDiv.appendChild(switchButton);
+        }
+        else    {
+            readDiv.textContent = "Not Read";
+            readDiv.style.color = "red";
+            readDiv.appendChild(switchButton);
+        }
+    });
 }
 
-function removeCard()   {
+function removeCard()   {   //delete the card 
     this.parentElement.parentElement.remove();
 }
